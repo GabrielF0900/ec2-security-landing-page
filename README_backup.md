@@ -1,0 +1,154 @@
+
+
+### Código do README.md
+
+````markdown
+# EC2 Security Landing Page
+
+> **Full Stack Developer**
+
+## 📖 Sobre o Projeto
+
+O **ec2-security-landing-page** é um projeto prático de implementação de infraestrutura na nuvem (IaaS) utilizando a AWS. O objetivo foi provisionar um servidor virtual (EC2), configurar regras de segurança de rede e hospedar uma Landing Page estática profissional.
+
+O projeto combina automação de infraestrutura (via User Data) com administração de sistemas Linux (edição via Nano), garantindo um ambiente seguro e funcional.
+
+---
+
+## 🏗️ Arquitetura da Solução
+
+A arquitetura foi desenhada para garantir controle total de acesso.
+
+* **Ferramenta de Desenho:** Diagrama desenvolvido no **Draw.io**.
+* **Arquivo Fonte:** O arquivo `ec2-security-landing-page.drawio` está disponível no repositório.
+
+**Fluxo Definido:**
+1.  **Porta 80 (HTTP):** Aberta para o mundo (0.0.0.0/0), permitindo acesso ao site.
+2.  **Porta 22 (SSH):** Restrita exclusivamente ao meu IP, protegendo a administração do servidor.
+
+![Arquitetura da Solução](./assets/arquiteturaDrawio.jpg)
+
+---
+
+## 🚀 Etapa 1: Preparação do Ambiente
+
+Antes de iniciar o provisionamento na nuvem, preparei o ambiente local instalando a AWS CLI (Command Line Interface). Embora o projeto principal tenha sido feito via console, ter a CLI configurada é essencial para gerenciamento avançado e testes de conectividade.
+
+![Setup AWS CLI](./assets/0-setup-cli.jpg)
+*Instalação da AWS CLI v2 para garantir ferramentas de linha de comando.*
+
+---
+
+## ☁️ Etapa 2: Provisionamento da Instância (EC2)
+
+No console da AWS, iniciei a configuração do servidor virtual.
+
+### 2.1 Identificação e Sistema Operacional
+Defini o nome da instância como `projeto1-web` para fácil identificação e selecionei o **Amazon Linux 2023** como sistema operacional (AMI), garantindo uma base segura, leve e otimizada para a nuvem.
+
+<div align="center">
+  <img src="./assets/1-nomes-tags.jpg" alt="Nome e Tags" width="45%">
+  <img src="./assets/2-ami-linux.jpg" alt="Seleção da AMI Linux" width="45%">
+</div>
+
+---
+
+## 🔒 Etapa 3: Segurança e Acesso
+
+Esta é a etapa crítica do projeto, onde definimos "quem entra e quem não entra".
+
+### 3.1 Par de Chaves (Key Pair)
+Gerei um novo par de chaves `.pem`. Sem esse arquivo, é impossível descriptografar a conexão SSH inicial, tornando a instância inacessível administrativamente.
+
+![Criação da Key Pair](./assets/3-keypair.jpg)
+
+### 3.2 Security Group (Firewall)
+Configurei o firewall virtual com regras estritas:
+* **SSH (22):** "Meu IP" (Acesso Admin).
+* **HTTP (80):** "Qualquer lugar" (Acesso Público).
+
+![Configuração do Security Group](./assets/4-security-group.jpg)
+
+---
+
+## ⚙️ Etapa 4: Automação (User Data)
+
+Para evitar configurar o servidor do zero manualmente a cada boot, injetei um script de **User Data**. Ele atualiza o sistema e instala o servidor Apache (`httpd`) automaticamente ao iniciar a instância.
+
+**Script utilizado:**
+```bash
+#!/bin/bash
+yum update -y
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+echo "<h1>Sucesso! Meu Web Server no Sandbox esta online!</h1>" > /var/www/html/index.html
+```
+
+![User Data Script](./assets/5-user-data.jpg)
+
+-----
+
+## ✅ Etapa 5: Lançamento e Validação
+
+Após revisar todas as configurações, a instância foi lançada. A tela de sucesso confirmou que o ID da instância foi gerado e o provisionamento iniciado.
+
+![Lançamento da Instância](./assets/6-launch-success.jpg)
+
+-----
+
+## 📝 Etapa 6: Deploy do Site Final (Edição via Nano)
+
+O User Data criou uma página simples de teste ("Sucesso\!"). Para transformar isso no site profissional final:
+
+1.  Acessei a instância via SSH (usando a chave criada na Etapa 3).
+2.  Naveguei até `/var/www/html`.
+3.  Utilizei o editor **Nano** para substituir o HTML básico pelo código final da Landing Page "MinhaCloud".
+
+<!-- end list -->
+
+```bash
+sudo nano /var/www/html/index.html
+# Colei o código HTML/CSS completo e salvei o arquivo.
+```
+
+-----
+
+## 📸 Resultado Final
+
+Após a edição manual, o servidor atualizou instantaneamente o conteúdo. Abaixo estão as evidências do site rodando publicamente na AWS.
+
+### 7.1 Home Page (Hero Section)
+
+A página inicial carregada, mostrando o título e o botão de "Saiba Mais", com o CSS carregado corretamente.
+
+![Home Page](./assets/7-site-capa.jpg)
+
+### 7.2 Seção de Funcionalidades
+
+A rolagem da página revela os cards de benefícios (Disponibilidade, Segurança e Escalabilidade), provando que o conteúdo HTML foi totalmente renderizado.
+
+![Seção de Funcionalidades](./assets/8-site-features.jpg)
+
+-----
+
+## 🛠️ Tecnologias Utilizadas
+
+  * **AWS EC2:** Infraestrutura.
+  * **AWS CLI:** Ferramentas de linha de comando.
+  * **Amazon Linux 2023:** OS.
+  * **Apache HTTP Server:** Web Server.
+  * **Nano:** Editor de texto para deploy manual.
+  * **Draw.io:** Documentação.
+
+-----
+
+## 👨‍💻 Autor
+
+**Gabriel Falcão**
+*Full Stack Developer*
+
+Entre em contato!
+
+  * [LinkedIn](https://www.linkedin.com/in/gabrielfalcaodev/)
+  * [GitHub](https://github.com/GabrielF0900)
