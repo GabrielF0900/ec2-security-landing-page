@@ -1,0 +1,38 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3">
+  <diagram name="Página-1" id="-ogskspXKOwHzl9jGJY2">
+    <mxGraphModel dx="1869" dy="626" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="HsPUTgcp5HiV_Qk6vWny-1" value="Instância EC2" style="outlineConnect=0;dashed=0;verticalLabelPosition=top;verticalAlign=bottom;align=center;html=1;shape=mxgraph.aws3.ec2;fillColor=#F58534;gradientColor=none;shadow=0;labelPosition=center;" vertex="1" parent="1">
+          <mxGeometry x="330" y="240" width="76.5" height="93" as="geometry" />
+        </mxCell>
+        <mxCell id="HsPUTgcp5HiV_Qk6vWny-2" value="Security Group (Firewall)" style="rounded=1;arcSize=10;dashed=1;strokeColor=#ff0000;fillColor=none;gradientColor=none;dashPattern=8 4;strokeWidth=2;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry x="268.5" y="170" width="199.5" height="199.5" as="geometry" />
+        </mxCell>
+        <mxCell id="HsPUTgcp5HiV_Qk6vWny-3" value="Internet/Qualquer Pessoa" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/internet_cloud.svg;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry x="20" y="170" width="50" height="31.5" as="geometry" />
+        </mxCell>
+        <mxCell id="HsPUTgcp5HiV_Qk6vWny-4" value="Voce ou Admin" style="shape=mxgraph.networks2.icon;aspect=fixed;fillColor=#EDEDED;strokeColor=#000000;gradientColor=#5B6163;network2IconShadow=1;network2bgFillColor=none;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;network2Icon=mxgraph.networks2.laptop;network2IconW=1;network2IconH=0.5734;" vertex="1" parent="1">
+          <mxGeometry x="20" y="304.33" width="50" height="28.67" as="geometry" />
+        </mxCell>
+        <mxCell id="HsPUTgcp5HiV_Qk6vWny-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.308;entryY=0.551;entryDx=0;entryDy=0;entryPerimeter=0;flowAnimation=1;" edge="1" parent="1" source="HsPUTgcp5HiV_Qk6vWny-3" target="HsPUTgcp5HiV_Qk6vWny-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HsPUTgcp5HiV_Qk6vWny-10" value="Porta 80 (HTTP)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="HsPUTgcp5HiV_Qk6vWny-8">
+          <mxGeometry x="-0.6316" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HsPUTgcp5HiV_Qk6vWny-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.308;entryY=0.602;entryDx=0;entryDy=0;entryPerimeter=0;flowAnimation=1;" edge="1" parent="1" source="HsPUTgcp5HiV_Qk6vWny-4" target="HsPUTgcp5HiV_Qk6vWny-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HsPUTgcp5HiV_Qk6vWny-12" value="Porta 22 (SSH) - Apenas Meu IP" style="edgeLabel;html=1;align=center;verticalAlign=top;resizable=0;points=[];labelPosition=center;verticalLabelPosition=bottom;" vertex="1" connectable="0" parent="HsPUTgcp5HiV_Qk6vWny-9">
+          <mxGeometry x="-0.7907" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
